@@ -1,10 +1,23 @@
-pipeline {
-  agent any
-  stages {
-    stage('scan') {
-      steps {
-        sh "docker run -v ${WORKSPACE}:/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config auto --config p/ci"
-      }
-    }
-  }
-}
+pipeline{
+	agent { label 'slave'}
+	stages{
+        stage('Build stage') {
+            steps {
+                echo 'This is a build stage'
+				
+			}
+		}
+        stage('Push stage') {
+            steps {
+                echo 'This is push stage'
+                
+			}
+		}
+        stage('Deploy stage') {
+            steps {
+                echo 'This is deploy stage'
+                
+			}
+		}
+	}
+}	
